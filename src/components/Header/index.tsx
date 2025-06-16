@@ -14,24 +14,24 @@ export function Header() {
         <NavigationMenuList className="flex gap-6">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-zinc-800 hover:text-blue-500">
-                <Home className="w-4 h-4 text-zinc-800 hover:text-blue-500" />
+              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
+                <Home className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
                 Home
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/products" className="flex items-center gap-2 px-4 py-2 text-zinc-800 hover:text-blue-500">
-                <Package className="w-4 h-4 text-zinc-800 hover:text-blue-500" />
+              <Link href="/products" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
+                <Package className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
                 Produtos
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/docs" className="flex items-center gap-2 px-4 py-2 text-zinc-800 hover:text-blue-500">
-                <Heart className="w-4 h-4 text-zinc-800 hover:text-blue-500" />
+              <Link href="/docs" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
+                <Heart className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
                 Favoritos
               </Link>
             </NavigationMenuLink>

@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: [
+      'i.imgur.com', 
+      'api.escuelajs.co', 
+      'cdn.dummyjson.com', 
+      'picsum.photos'
+    ],
+  },
 };
 
 export default nextConfig;

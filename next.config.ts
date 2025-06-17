@@ -6,7 +6,11 @@ const nextConfig: NextConfig = {
       'i.imgur.com', 
       'api.escuelajs.co', 
       'cdn.dummyjson.com', 
-      'picsum.photos'
+      'picsum.photos',
+      'placeimg.com',
+      'example.com',
+      'placehold.co', 
+      'www-aiva-ai.translate.goog'
     ],
   },
 };

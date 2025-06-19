@@ -19,16 +19,16 @@ export default function SignUpSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button type="submit" variant="ghost" className="text-zinc-100 hover:text-blue-500">
+        <Button type="submit" variant="ghost" className="text-zinc-100 hover:text-blue-500 p-3">
           <UserRoundPlus className="w-8 h-8" />
         </Button>
       </SheetTrigger>
 
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Login User</SheetTitle>
+          <SheetTitle>Register User</SheetTitle>
           <SheetDescription className="mt-5">
-            Log in with your account and buy as much as you want.
+            Fill in your details and enjoy your shopping!
           </SheetDescription>
         </SheetHeader>
 
@@ -52,7 +52,7 @@ export default function SignUpSheet() {
         </div>
 
         <SheetFooter>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Register</Button>
           <SheetClose asChild>
             <Button variant="outline">Close</Button>
           </SheetClose>

@@ -5,8 +5,20 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.example.com', 
+        hostname: 'c8.alamy.com', 
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.escuelajs.co'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-3.expansion.mx'
+      }
     ],
   },
 };

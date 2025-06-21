@@ -19,7 +19,7 @@ export default function SignUpSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button type="submit" variant="ghost" className="text-zinc-100 hover:text-blue-500 p-3">
+        <Button type="submit" variant="ghost" className="text-blue-500 hover:text-blue-800 p-3">
           <UserRoundPlus className="w-8 h-8" />
         </Button>
       </SheetTrigger>

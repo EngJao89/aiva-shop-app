@@ -1,48 +1,47 @@
 'use client';
 
+import axios, { AxiosError } from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import axios, { AxiosError } from "axios";
 
-import { Category } from "@/@types/types";
-import { SectionCatergory } from "@/components/SectionCategory";
+import { Product } from "@/@types/types";
+
 import api from "@/lib/axios";
 import { apiRoutes } from "@/services/apiRoutes";
+import { Category } from "@/components/Category";
+import { ProductCard } from "@/components/ProductCard"
 
 export default function Home() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const fetchCategory = useCallback(async () => {
+  const fetchProducts = useCallback(async () => {
     try {
-      const response = await api.get(apiRoutes.category);
-      setCategories(response.data);
-    } catch(error: unknown) {
+      const response = await api.get<Product[]>(apiRoutes.product)
+      setProducts(response.data)
+    } catch (error: unknown) { 
       if (axios.isAxiosError(error)) {
         const axiosError = error as AxiosError<{ message?: string }>;
-        toast.error(`Erro ao carregar categorias: ${axiosError.message}`, { theme: "light" });
+        toast.error(`Erro ao carregar produtos: ${axiosError.message}`, { theme: "light" });
       } else if (error instanceof Error) {
         toast.error(`Um erro aconteceu: ${error.message}`, { theme: "light" });
       } else {
         toast.error('Um erro inesperado aconteceu', { theme: "light" });
       }
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    fetchCategory()
-  }, [fetchCategory]);
+    fetchProducts()
+  }, [fetchProducts])
 
   return (
-    <div className="m-4">
-      <div className="m-10">
-        <h1 className="text-zinc-700 font-bold text-2xl">Categorias</h1>
-      </div>
-
-      <div className="flex overflow-x-auto pb-4 scrollbar-hide gap-8">
-        {categories.map((category) => (
-          <SectionCatergory key={category.id} categories={category}/>
+    <div>
+      <Category />
+      <div className="grid grid-cols-2 gap-6 mt-14 ml-16 mr-16">
+        {products.map((product) => (
+          <ProductCard key={product.id} products={product}/>
         ))}
       </div>
     </div>
-  );
+  )
 }

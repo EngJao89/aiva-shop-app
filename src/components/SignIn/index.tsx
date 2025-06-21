@@ -3,13 +3,14 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-
 import { User } from "lucide-react";
 import { toast } from "react-toastify";
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import api from "@/lib/axios";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "../ui/button";
 import { 
   Dialog, 
@@ -23,11 +24,7 @@ import {
 } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-
-import { useAuth } from "@/contexts/AuthContext";
-import api from "@/lib/axios";
 import { FormField } from "../ui/form";
-
 
 const loginSchema = z.object({
   email: z.string().email("E-mail é obrigatório"),
@@ -90,7 +87,7 @@ export function SignIn() {
   return(
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="text-zinc-100 hover:text-blue-500 p-3">
+        <Button variant="ghost" className="text-blue-500 hover:text-blue-800 p-3">
           <User className="w-8 h-8" />
         </Button>
       </DialogTrigger>
@@ -100,7 +97,7 @@ export function SignIn() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <DialogHeader>
               <DialogTitle>Login User</DialogTitle>
-              <DialogDescription>
+              <DialogDescription className="mb-6 mt-2">
                 Login with your account and buy as much as you want.
               </DialogDescription>
             </DialogHeader>
@@ -118,7 +115,7 @@ export function SignIn() {
                         value={field.value || ''} 
                       />
                       {errors.email && (
-                        <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                        <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>
                       )}
                     </>
                   )}
@@ -145,7 +142,7 @@ export function SignIn() {
                 />
               </div>
             </div>
-            <DialogFooter>
+            <DialogFooter className="mt-4">
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>

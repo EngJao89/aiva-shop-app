@@ -25,3 +25,6 @@ pnpm dev
 # or
 bun dev
 ```
+## 04-Link to Deploy
+
+- https://aiva-shop-app.vercel.app/

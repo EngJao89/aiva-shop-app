@@ -1,10 +1,10 @@
 'use client';
 
-import { Category } from "@/@types/types";
+import { CategoryProducts } from "@/@types/types";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface CategoryProps {
-  categories: Category
+  categories: CategoryProducts
 }
 
 export function SectionCatergory({categories}: CategoryProps) {

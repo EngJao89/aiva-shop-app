@@ -3,8 +3,7 @@
 import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-import { 
-  Home, 
+import {  
   Package, 
   Heart, 
   User, 
@@ -23,8 +22,8 @@ import { SignIn } from '../SignIn';
 const SignUpSheet = dynamic(() => import('../SignUpSheet'), { 
   ssr: false, 
   loading: () => ( 
-    <Button variant="ghost" className="w-10 h-10 text-zinc-100 hover:text-blue-500 p-3">
-      <User className="w-8 h-8" />
+    <Button variant="ghost" className="w-10 h-10 text-blue-500 hover:text-blue-800 p-3">
+      <User className="w-8 h-8 text-blue-500 hover:text-blue-800" />
     </Button>
   ),
 });
@@ -37,7 +36,7 @@ export function Header() {
       <Button 
         variant="ghost" 
         onClick={() => router.push('/')} 
-        className="text-zinc-100 hover:text-blue-500 p-3"
+        className="text-blue-500 hover:text-blue-800 p-3"
       >
         <Store className="w-8 h-8"/>
       </Button>
@@ -45,24 +44,16 @@ export function Header() {
         <NavigationMenuList className="flex gap-6">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
-                <Home className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
-                Home
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild>
-              <Link href="/products" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
-                <Package className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
+              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800">
+                <Package className="w-4 h-4 text-blue-500 hover:text-blue-800" />
                 Produtos
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/docs" className="flex items-center gap-2 px-4 py-2 text-zinc-100 hover:text-blue-500">
-                <Heart className="w-4 h-4 text-zinc-100 hover:text-blue-500" />
+              <Link href="/docs" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800">
+                <Heart className="w-4 h-4 text-blue-500 hover:text-blue-800" />
                 Favoritos
               </Link>
             </NavigationMenuLink>

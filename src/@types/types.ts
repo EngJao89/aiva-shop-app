@@ -1,4 +1,4 @@
-export type Category = {
+export type CategoryProducts = {
   id: number;
   name: string;
   slug: string;
@@ -13,7 +13,7 @@ export type Product = {
   slug: string;
   price: number;
   description: string;
-  category: Category;
+  category: CategoryProducts;
   images: string[];
   creationAt: string;
   updatedAt: string;

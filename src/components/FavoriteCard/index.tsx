@@ -1,32 +1,26 @@
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 
+import { useFavorites } from "@/contexts/FavoritesContext";
 import { Product } from "@/@types/types";
 import { formatPrice } from "@/utils/formatter";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-import { useFavorites } from "@/contexts/FavoritesContext";
 
 
 interface CardProps {
   products: Product;
 }
 
-export function ProductCard({ products }: CardProps) {
-  const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
-  const favorite = isFavorite(products.id);
+export function FavoriteCard({ products }: CardProps) {
+  const { removeFromFavorites } = useFavorites();
 
-  const handleToggleFavorite = () => {
-    if (favorite) {
-      removeFromFavorites(products.id);
-      toast.success(`${products.title} removido dos favoritos!`, { theme: "light" });
-    } else {
-      addToFavorites(products);
-      toast.success(`${products.title} adicionado aos favoritos!`, { theme: "light" });
-    }
+  const handleRemoveFromFavorites = () => {
+    removeFromFavorites(products.id);
+    toast.success(`${products.title} removido dos favoritos!`, { theme: "light" });
   };
 
   return (
@@ -36,12 +30,10 @@ export function ProductCard({ products }: CardProps) {
         <Button 
           variant="ghost" 
           size="sm"
-          onClick={handleToggleFavorite}
+          onClick={handleRemoveFromFavorites}
           className="p-2 hover:bg-zinc-500"
         >
-          <Heart 
-            className={`w-4 h-4 ${favorite ? 'text-red-500 fill-red-500' : 'text-zinc-100'}`} 
-          />
+          <Trash2 className="w-4 h-4 text-red-400 hover:text-red-300" />
         </Button>
       </CardHeader>
       <CardContent>

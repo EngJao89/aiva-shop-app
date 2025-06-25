@@ -18,6 +18,8 @@ import {
 } from "../ui/navigation-menu";
 import { Button } from '../ui/button';
 import { SignIn } from '../SignIn';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { Badge } from '../ui/badge';
 
 const SignUpSheet = dynamic(() => import('../SignUpSheet'), { 
   ssr: false, 
@@ -30,6 +32,7 @@ const SignUpSheet = dynamic(() => import('../SignUpSheet'), {
 
 export function Header() {
   const router = useRouter();
+  const { favorites } = useFavorites();
 
   return (
     <div className="w-full fixed flex justify-between items-center top-0 left-0 glass-nav z-50 p-4">
@@ -52,9 +55,14 @@ export function Header() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/docs" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800">
+              <Link href="/favorites" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800 relative">
                 <Heart className="w-4 h-4 text-blue-500 hover:text-blue-800" />
                 Favoritos
+                {favorites.length > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-red-500">
+                    {favorites.length}
+                  </Badge>
+                )}
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>

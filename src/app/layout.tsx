@@ -29,19 +29,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <FavoritesProvider>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
-          >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
+      >
+        <AuthProvider>
+          <FavoritesProvider>
             <ToastContainer autoClose={1500}/>
             <Header />
             <main className="pt-16"> 
               {children}
             </main>
-          </body>
-        </FavoritesProvider>
-      </AuthProvider>
+          </FavoritesProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

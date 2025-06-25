@@ -1,10 +1,27 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { FavoriteCard } from "@/components/FavoriteCard";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
 export default function Favorites() {
   const { favorites } = useFavorites();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-zinc-100 mb-8">Meus Favoritos</h1>
+        <div className="text-center py-12">
+          <p className="text-zinc-400 text-lg">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (favorites.length === 0) {
     return (

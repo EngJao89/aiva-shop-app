@@ -1,8 +1,7 @@
 'use client';
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Product } from '@/@types/types';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 interface FavoritesContextType {
   favorites: Product[];
@@ -14,7 +13,7 @@ interface FavoritesContextType {
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+  const [favorites, setFavorites] = useState<Product[]>([]);
 
   const addToFavorites = (product: Product) => {
     setFavorites(prev => {

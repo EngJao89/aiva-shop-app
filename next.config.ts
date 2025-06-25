@@ -26,6 +26,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'via.placeholder.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'fakestoreapi.com'
       }
     ],
   },

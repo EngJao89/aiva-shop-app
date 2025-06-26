@@ -3,16 +3,11 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import { 
   Sheet, 
-  SheetClose, 
   SheetContent, 
-  SheetDescription, 
-  SheetFooter, 
   SheetHeader, 
   SheetTitle, 
   SheetTrigger 
 } from "../ui/sheet";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 
 export function Cart() {
   return (

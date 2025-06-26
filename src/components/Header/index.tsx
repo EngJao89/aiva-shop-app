@@ -21,6 +21,7 @@ import { Button } from '../ui/button';
 import { SignIn } from '../SignIn';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { Badge } from '../ui/badge';
+import { Cart } from '../Cart';
 
 const SignUpSheet = dynamic(() => import('../SignUpSheet'), { 
   ssr: false, 
@@ -74,6 +75,8 @@ export function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+
+      <Cart />
 
       <SignIn />
 

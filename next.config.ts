@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+  },
   images: {
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -38,6 +42,22 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'urltoimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.platform.next'
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos'
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images-cdn.ubuy.co.id'
       }
     ],
   },

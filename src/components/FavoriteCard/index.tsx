@@ -23,6 +23,22 @@ export function FavoriteCard({ products }: CardProps) {
     toast.success(`${products.title} removido dos favoritos!`, { theme: "light" });
   };
 
+  const isValidImageUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const getValidImageUrl = (url: string) => {
+    if (isValidImageUrl(url)) {
+      return url;
+    }
+    return `https://picsum.photos/400/300?random=${Math.random()}`;
+  };
+
   return (
     <Card className="bg-zinc-600">
       <CardHeader className="flex flex-row items-center justify-between">
@@ -43,11 +59,15 @@ export function FavoriteCard({ products }: CardProps) {
               <CarouselItem key={index}>
                 <div className="p-1">
                   <Image
-                    src={image}
+                    src={getValidImageUrl(image)}
                     alt={`${products.title} - Image ${index + 1}`}
                     width={400}
                     height={300}
                     className="w-full h-48 object-cover rounded-lg"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://picsum.photos/400/300?random=${Math.random()}`;
+                    }}
                   />
                 </div>
               </CarouselItem>

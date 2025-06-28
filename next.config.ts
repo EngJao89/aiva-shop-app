@@ -58,6 +58,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images-cdn.ubuy.co.id'
+      },
+      {
+        protocol: 'https',
+        hostname: 'th.bing.com'
       }
     ],
   },

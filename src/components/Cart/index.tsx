@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { 
   Sheet, 
   SheetContent, 
+  SheetDescription, 
   SheetHeader, 
   SheetTitle, 
   SheetTrigger 
@@ -21,6 +22,9 @@ export function Cart() {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Carrinho de compras</SheetTitle>
+          <SheetDescription>
+            Aqui você pode gerenciar os itens do seu carrinho de compras.
+          </SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>

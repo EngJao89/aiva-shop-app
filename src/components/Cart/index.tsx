@@ -25,6 +25,9 @@ export function Cart() {
           <SheetDescription>
             Aqui você pode gerenciar os itens do seu carrinho de compras.
           </SheetDescription>
+          <SheetDescription>
+            Aqui você pode gerenciar os itens do seu carrinho de compras.
+          </SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>

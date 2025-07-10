@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import { toast } from "react-toastify";
 
 import { Product } from "@/@types/types";
@@ -9,6 +9,7 @@ import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { useCart } from "@/contexts/CartContext";
 
 
 interface CardProps {
@@ -17,7 +18,9 @@ interface CardProps {
 
 export function ProductCard({ products }: CardProps) {
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
+  const { addToCart, isInCart } = useCart();
   const favorite = isFavorite(products.id);
+  const inCart = isInCart(products.id);
 
   const handleToggleFavorite = () => {
     if (favorite) {
@@ -27,6 +30,11 @@ export function ProductCard({ products }: CardProps) {
       addToFavorites(products);
       toast.success(`${products.title} adicionado aos favoritos!`, { theme: "light" });
     }
+  };
+
+  const handleAddToCart = () => {
+    addToCart(products);
+    toast.success(`${products.title} adicionado ao carrinho!`, { theme: "light" });
   };
 
   const isValidImageUrl = (url: string) => {
@@ -88,9 +96,20 @@ export function ProductCard({ products }: CardProps) {
           {products.category.name}
         </Badge>
 
-        <h1 className="text-zinc-200 text-bold">
-          {formatPrice(products.price)}
-        </h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-zinc-200 text-bold">
+            {formatPrice(products.price)}
+          </h1>
+          <Button
+            size="sm"
+            onClick={handleAddToCart}
+            disabled={inCart}
+            className={`${inCart ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+          >
+            <ShoppingCart className="w-4 h-4 mr-1" />
+            {inCart ? 'No Carrinho' : 'Adicionar'}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

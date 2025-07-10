@@ -76,9 +76,10 @@ export function Header() {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <Cart />
-
-      <SignIn />
+      <div className="flex items-center gap-2">
+        <Cart />
+        <SignIn />
+      </div>
 
       <SignUpSheet />
     </div>

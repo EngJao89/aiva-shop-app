@@ -6,6 +6,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
+import { CartProvider } from "@/contexts/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +35,13 @@ export default function RootLayout({
       >
         <AuthProvider>
           <FavoritesProvider>
-            <ToastContainer autoClose={1500}/>
-            <Header />
-            <main className="pt-16"> 
-              {children}
-            </main>
+            <CartProvider>
+              <ToastContainer autoClose={1500}/>
+              <Header />
+              <main className="pt-16"> 
+                {children}
+              </main>
+            </CartProvider>
           </FavoritesProvider>
         </AuthProvider>
       </body>

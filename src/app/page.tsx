@@ -1,7 +1,7 @@
 'use client';
 
 import axios, { AxiosError } from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import { toast } from "react-toastify";
 
 import { Product } from "@/@types/types";
@@ -13,6 +13,7 @@ import { ProductCard } from "@/components/ProductCard"
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   const fetchProducts = useCallback(async () => {
     try {
@@ -34,13 +35,55 @@ export default function Home() {
     fetchProducts()
   }, [fetchProducts])
 
+  const filteredProducts = useMemo(() => {
+    if (!selectedCategory) {
+      return products;
+    }
+    return products.filter(product => product.category.id === selectedCategory);
+  }, [products, selectedCategory]);
+
+  const handleCategorySelect = (categoryId: number | null) => {
+    setSelectedCategory(categoryId);
+  };
+
   return (
     <div>
-      <Category />
-      <div className="grid grid-cols-2 gap-6 mt-14 ml-16 mr-16">
-        {products.map((product) => (
-          <ProductCard key={product.id} products={product}/>
-        ))}
+      <Category 
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategorySelect}
+      />
+      
+      <div className="px-16 mb-6">
+        {selectedCategory && (
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold text-zinc-700">
+              Produtos da categoria selecionada
+            </h2>
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="text-blue-600 hover:text-blue-800 text-sm underline"
+            >
+              Limpar filtro
+            </button>
+          </div>
+        )}
+        
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-zinc-500 text-lg">
+              {selectedCategory 
+                ? "Nenhum produto encontrado nesta categoria." 
+                : "Nenhum produto disponível."
+              }
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} products={product}/>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

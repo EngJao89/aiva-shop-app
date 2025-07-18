@@ -107,7 +107,6 @@ export function ProductCard({ products }: CardProps) {
             className={`${inCart ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
           >
             <ShoppingCart className="w-4 h-4 mr-1" />
-            {inCart ? 'No Carrinho' : 'Adicionar'}
           </Button>
         </div>
       </CardFooter>

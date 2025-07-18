@@ -7,7 +7,12 @@ import { CategoryProducts } from "@/@types/types";
 import { apiRoutes } from "@/services/apiRoutes";
 import { SectionCatergory } from "../SectionCategory";
 
-export function Category() {
+interface CategoryProps {
+  selectedCategory?: number | null;
+  onCategorySelect: (categoryId: number | null) => void;
+}
+
+export function Category({ selectedCategory, onCategorySelect }: CategoryProps) {
   const [categories, setCategories] = useState<CategoryProducts[]>([]);
 
   const fetchCategory = useCallback(async () => {
@@ -26,9 +31,19 @@ export function Category() {
     }
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     fetchCategory()
   }, [fetchCategory]);
+
+  const handleCategoryClick = (categoryId: number) => {
+    if (selectedCategory === categoryId) {
+      // Se clicar na mesma categoria, remove o filtro
+      onCategorySelect(null);
+    } else {
+      // Seleciona a nova categoria
+      onCategorySelect(categoryId);
+    }
+  };
 
   return (
     <div className="m-4">
@@ -38,7 +53,12 @@ export function Category() {
 
       <div className="flex overflow-x-auto pb-4 scrollbar-hide gap-8">
         {categories.map((category) => (
-          <SectionCatergory key={category.id} categories={category}/>
+          <SectionCatergory 
+            key={category.id} 
+            categories={category}
+            isSelected={selectedCategory === category.id}
+            onClick={() => handleCategoryClick(category.id)}
+          />
         ))}
       </div>
     </div>

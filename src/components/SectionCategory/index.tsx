@@ -12,7 +12,7 @@ interface CategoryProps {
 export function SectionCatergory({ categories, isSelected = false, onClick }: CategoryProps) {
   return(
     <div 
-      className={`flex flex-col items-center min-w-[80px] cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col items-center min-w-[96px] cursor-pointer transition-all duration-200 ${
         isSelected ? 'scale-110' : 'hover:scale-105'
       }`}
       onClick={onClick}

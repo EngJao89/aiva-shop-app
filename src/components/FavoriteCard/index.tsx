@@ -40,16 +40,16 @@ export function FavoriteCard({ products }: CardProps) {
   };
 
   return (
-    <Card className="bg-zinc-600">
+    <Card className="bg-card text-card-foreground border-border">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-zinc-100 flex-1">{products.title}</CardTitle>
+        <CardTitle className="text-card-foreground flex-1">{products.title}</CardTitle>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={handleRemoveFromFavorites}
-          className="p-2 hover:bg-zinc-500"
+          className="p-2 hover:bg-accent"
         >
-          <Trash2 className="w-4 h-4 text-red-400 hover:text-red-300" />
+          <Trash2 className="w-4 h-4 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300" />
         </Button>
       </CardHeader>
       <CardContent>
@@ -80,7 +80,7 @@ export function FavoriteCard({ products }: CardProps) {
           {products.category.name}
         </Badge>
 
-        <h1 className="text-zinc-200 text-bold">
+        <h1 className="text-muted-foreground font-semibold">
           {formatPrice(products.price)}
         </h1>
       </CardFooter>

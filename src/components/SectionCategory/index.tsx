@@ -17,13 +17,13 @@ export function SectionCatergory({ categories, isSelected = false, onClick }: Ca
       }`}
       onClick={onClick}
     >
-      <Avatar className={`mb-3 ${isSelected ? 'ring-2 ring-blue-500' : ''}`}>
+      <Avatar className={`mb-3 ${isSelected ? 'ring-2 ring-primary' : ''}`}>
         <AvatarImage src={categories.image}/>
         <AvatarFallback>{categories.slug}</AvatarFallback>
       </Avatar>
 
       <h1 className={`text-xs text-center font-bold ${
-        isSelected ? 'text-blue-600' : 'text-zinc-700'
+        isSelected ? 'text-primary' : 'text-muted-foreground'
       }`}>
         {categories.name}
       </h1>

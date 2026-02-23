@@ -87,7 +87,7 @@ export function SignIn() {
   return(
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" className="text-blue-500 hover:text-blue-800 p-3">
+        <Button variant="ghost" className="text-foreground hover:bg-accent p-3">
           <User className="w-8 h-8" />
         </Button>
       </DialogTrigger>

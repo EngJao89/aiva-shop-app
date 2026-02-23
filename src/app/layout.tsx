@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { CartProvider } from "@/contexts/CartContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeAwareToasts } from "@/components/ThemeAwareToasts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,21 +30,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var v=localStorage.getItem('theme');var d=v==='dark'||(!v&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);})();`,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <AuthProvider>
-          <FavoritesProvider>
-            <CartProvider>
-              <ToastContainer autoClose={1500}/>
-              <Header />
-              <main className="pt-16"> 
-                {children}
-              </main>
-            </CartProvider>
-          </FavoritesProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <FavoritesProvider>
+              <CartProvider>
+                <ThemeAwareToasts />
+                <Header />
+                <main className="pt-16">
+                  {children}
+                </main>
+              </CartProvider>
+            </FavoritesProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

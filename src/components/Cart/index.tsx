@@ -54,7 +54,7 @@ export function Cart() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="ghost" className="text-blue-500 hover:text-blue-800 p-3 relative">
+        <Button variant="ghost" className="text-foreground hover:bg-accent p-3 relative">
           <ShoppingCart className="w-8 h-8" />
           {getTotalItems() > 0 && (
             <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-red-500">
@@ -76,16 +76,16 @@ export function Cart() {
           {cartItems.length === 0 ? (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
-                <ShoppingCart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">Seu carrinho está vazio</p>
-                <p className="text-gray-400 text-sm">Adicione produtos para começar</p>
+                <ShoppingCart className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+                <p className="text-muted-foreground">Seu carrinho está vazio</p>
+                <p className="text-muted-foreground/80 text-sm">Adicione produtos para começar</p>
               </div>
             </div>
           ) : (
             <>
               <div className="flex-1 overflow-y-auto py-4 space-y-4">
                 {cartItems.map((item) => (
-                  <div key={item.product.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div key={item.product.id} className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
                     <div className="relative w-16 h-16 flex-shrink-0">
                       <Image
                         src={getValidImageUrl(item.product.images[0])}
@@ -100,8 +100,8 @@ export function Cart() {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm truncate">{item.product.title}</h3>
-                      <p className="text-gray-500 text-sm">{formatPrice(item.product.price)}</p>
+                      <h3 className="font-medium text-sm truncate text-foreground">{item.product.title}</h3>
+                      <p className="text-muted-foreground text-sm">{formatPrice(item.product.price)}</p>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export function Cart() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleRemoveFromCart(item.product.id, item.product.title)}
-                      className="text-red-500 hover:text-red-700"
+                      className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>

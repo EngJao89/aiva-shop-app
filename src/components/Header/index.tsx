@@ -22,12 +22,13 @@ import { SignIn } from '../SignIn';
 import { useFavorites } from '@/contexts/FavoritesContext';
 import { Badge } from '../ui/badge';
 import { Cart } from '../Cart';
+import { ThemeToggle } from '../ThemeToggle';
 
 const SignUpSheet = dynamic(() => import('../SignUpSheet'), { 
   ssr: false, 
   loading: () => ( 
-    <Button variant="ghost" className="w-10 h-10 text-blue-500 hover:text-blue-800 p-3">
-      <User className="w-8 h-8 text-blue-500 hover:text-blue-800" />
+    <Button variant="ghost" className="w-10 h-10 text-foreground hover:bg-accent p-3">
+      <User className="w-8 h-8" />
     </Button>
   ),
 });
@@ -46,7 +47,7 @@ export function Header() {
       <Button 
         variant="ghost" 
         onClick={() => router.push('/')} 
-        className="text-blue-500 hover:text-blue-800 p-3"
+        className="text-primary hover:bg-accent p-3"
       >
         <Store className="w-8 h-8"/>
       </Button>
@@ -54,16 +55,16 @@ export function Header() {
         <NavigationMenuList className="flex gap-6">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800">
-                <Package className="w-4 h-4 text-blue-500 hover:text-blue-800" />
+              <Link href="/" className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary">
+                <Package className="w-4 h-4" />
                 Produtos
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/favorites" className="flex items-center gap-2 px-4 py-2 text-blue-500 hover:text-blue-800 relative">
-                <Heart className="w-4 h-4 text-blue-500 hover:text-blue-800" />
+              <Link href="/favorites" className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary relative">
+                <Heart className="w-4 h-4" />
                 Favoritos
                 {mounted && favorites.length > 0 && (
                   <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-red-500">
@@ -77,6 +78,7 @@ export function Header() {
       </NavigationMenu>
 
       <div className="flex items-center gap-2">
+        <ThemeToggle />
         <Cart />
         <SignIn />
       </div>

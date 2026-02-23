@@ -74,6 +74,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'championgearz.co.za'
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
       }
     ],
   },

@@ -48,7 +48,7 @@ export function Category({ selectedCategory, onCategorySelect }: CategoryProps) 
   return (
     <div className="m-4">
       <div className="m-10">
-        <h1 className="text-zinc-700 font-bold text-2xl">Categorias</h1>
+        <h1 className="text-foreground font-bold text-2xl">Categorias</h1>
       </div>
 
       <div className="flex overflow-x-auto pb-4 scrollbar-hide gap-8">

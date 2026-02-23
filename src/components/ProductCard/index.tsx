@@ -54,17 +54,17 @@ export function ProductCard({ products }: CardProps) {
   };
 
   return (
-    <Card className="bg-zinc-600">
+    <Card className="bg-card text-card-foreground border-border">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-zinc-100 flex-1">{products.title}</CardTitle>
+        <CardTitle className="text-card-foreground flex-1">{products.title}</CardTitle>
         <Button 
           variant="ghost" 
           size="sm"
           onClick={handleToggleFavorite}
-          className="p-2 hover:bg-zinc-500"
+          className="p-2 hover:bg-accent"
         >
           <Heart 
-            className={`w-4 h-4 ${favorite ? 'text-red-500 fill-red-500' : 'text-zinc-100'}`} 
+            className={`w-4 h-4 ${favorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground'}`} 
           />
         </Button>
       </CardHeader>
@@ -97,14 +97,14 @@ export function ProductCard({ products }: CardProps) {
         </Badge>
 
         <div className="flex items-center gap-2">
-          <h1 className="text-zinc-200 text-bold">
+          <h1 className="text-muted-foreground font-semibold">
             {formatPrice(products.price)}
           </h1>
           <Button
             size="sm"
             onClick={handleAddToCart}
             disabled={inCart}
-            className={`${inCart ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+            className={inCart ? 'bg-green-600 hover:bg-green-600' : ''}
           >
             <ShoppingCart className="w-4 h-4 mr-1" />
           </Button>

@@ -15,9 +15,9 @@ export default function Favorites() {
   if (!mounted) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-zinc-100 mb-8">Meus Favoritos</h1>
+        <h1 className="text-3xl font-bold text-foreground mb-8">Meus Favoritos</h1>
         <div className="text-center py-12">
-          <p className="text-zinc-400 text-lg">Carregando...</p>
+          <p className="text-muted-foreground text-lg">Carregando...</p>
         </div>
       </div>
     );
@@ -26,12 +26,12 @@ export default function Favorites() {
   if (favorites.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-zinc-100 mb-8">Meus Favoritos</h1>
+        <h1 className="text-3xl font-bold text-foreground mb-8">Meus Favoritos</h1>
         <div className="text-center py-12">
-          <p className="text-zinc-400 text-lg">
+          <p className="text-muted-foreground text-lg">
             Você ainda não tem produtos favoritos.
           </p>
-          <p className="text-zinc-500 mt-2">
+          <p className="text-muted-foreground/80 mt-2">
             Adicione produtos aos favoritos para vê-los aqui!
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Favorites() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-zinc-100 mb-8">
+      <h1 className="text-3xl font-bold text-foreground mb-8">
         Meus Favoritos ({favorites.length})
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

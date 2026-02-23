@@ -56,12 +56,12 @@ export default function Home() {
       <div className="px-16 mb-6">
         {selectedCategory && (
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-zinc-700">
+            <h2 className="text-xl font-semibold text-foreground">
               Produtos da categoria selecionada
             </h2>
             <button
               onClick={() => setSelectedCategory(null)}
-              className="text-blue-600 hover:text-blue-800 text-sm underline"
+              className="text-primary hover:underline text-sm"
             >
               Limpar filtro
             </button>
@@ -70,7 +70,7 @@ export default function Home() {
         
         {filteredProducts.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-zinc-500 text-lg">
+            <p className="text-muted-foreground text-lg">
               {selectedCategory 
                 ? "Nenhum produto encontrado nesta categoria." 
                 : "Nenhum produto disponível."
